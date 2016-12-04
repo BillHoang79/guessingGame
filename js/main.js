@@ -1,22 +1,25 @@
-function addItem(){
-	//user types in item to add on list
-	var userInput = document.getElementById('input').value
-	//the item is them taken and stored in text
-	var text = document.createTextNode(userInput)
-	//text becomes li and is ready to be put on list
-	var li = document.createElement('li')
-	//item list is retrieved and li is taken 
-	document.getElementById('items').appendChild(li)
-	//li is added to the list with this 
-	li.appendChild(text)
+var secretNumber = Math.floor((Math.random()* 100) + 1)
+console.log(secretNumber)
 
-function removeItem() {
-    li.className = "remove"
+var guess = Number(prompt("chooose a number between 1-100"))
+var tries = 10
+var numGuess = 0
+
+while(guess != secretNumber){
+
+	if(numGuess >= tries ){
+		console.log("you lose")
+			break
+	}else if(guess < secretNumber){
+		numGuess++ 
+		guess = prompt("guess higher")
+	}else if(guess > secretNumber){
+			numGuess++
+		guess = prompt("guess lower")
 	}
-	li.onclick = removeItem
+	console.log(numGuess)
+} 
+
+if(guess == secretNumber){
+	console.log("you won " + "it took " + numGuess + " tries took you to win!!")
 }
-
-
-
-
-
